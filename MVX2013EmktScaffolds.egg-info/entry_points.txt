@@ -1,0 +1,3 @@
+[console_scripts]
+emktscaffold = MVX2013EmktScaffolds.__main__
+
