@@ -18,16 +18,20 @@ def createProject(projectName, langs):
   folders.createProjectFolders(projectName=projectName, langs=langs)
   files.createProjectFiles(projectName=projectName, langs=langs)
 
-langs = ['pt-BR'] if not args.langs else args.langs
+def main():
+  langs = ['pt-BR'] if not args.langs else args.langs
 
-if folders.folderExists(args.name):
-  opt = raw_input('Folder \'%s\' alredy exists, do you want to overwrite it\'s contents? ' % args.name)
-  opt = opt.lower()
-  if opt == "y" or opt == "yes":
-    createProject(projectName=args.name, langs=langs)
-  elif opt == "n" or opt == "no":
-    print 'Exiting...'
+  if folders.folderExists(args.name):
+    opt = raw_input('Folder \'%s\' alredy exists, do you want to overwrite it\'s contents? ' % args.name)
+    opt = opt.lower()
+    if opt == "y" or opt == "yes":
+      createProject(projectName=args.name, langs=langs)
+    elif opt == "n" or opt == "no":
+      print 'Exiting...'
+    else:
+      print('Invalid option \'%s\'' % opt)
   else:
-    print('Invalid option \'%s\'' % opt)
-else:
-  createProject(projectName=args.name, langs=langs)
+    createProject(projectName=args.name, langs=langs)
+
+if __name__ == "__main__":
+    main()
